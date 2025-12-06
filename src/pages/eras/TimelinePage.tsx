@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { ERA_TIMELINE_DATA, EraTimelineData } from '../../data/eraTimelineData';
+import { ERA_TIMELINE_DATA } from '../../data/eraTimelineData';
 import { ERA_DATA } from '../../data/eras';
 import ImageGallery, { ImageMetadata } from '../../components/ImageGallery';
 import './TimelinePage.css';

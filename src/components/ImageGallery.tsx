@@ -19,7 +19,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
 
     // Handle both old format (string[]) and new format (ImageMetadata[])
     const getImageSrc = (item: ImageMetadata | string): string => {
-        return typeof item === 'string' ? item : item.src;
+        return typeof item === 'string' ? item : (item.src || '');
     };
 
     const getDescription = (item: ImageMetadata | string): string | null => {

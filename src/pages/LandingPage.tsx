@@ -9,7 +9,6 @@ interface LandingPageProps {
 type WallPhase = 'idle' | 'closing' | 'latched' | 'departing';
 
 const STAR_COUNT = 300;
-const COMET_COUNT = 2;
 
 const LandingPage = ({ onEnterHangar, hideContent = false }: LandingPageProps) => {
     const [phase, setPhase] = useState<WallPhase>('idle');

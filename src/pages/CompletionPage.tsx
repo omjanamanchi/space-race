@@ -5,7 +5,7 @@ interface CompletionPageProps {
     onBackToStart?: () => void;
 }
 
-const CompletionPage = ({ onBackToStart }: CompletionPageProps) => {
+const CompletionPage = ({}: CompletionPageProps) => {
     const [showWorksCited, setShowWorksCited] = useState(false);
     const [isFading, setIsFading] = useState(false);
 
