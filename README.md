@@ -1,10 +1,10 @@
 # Space Race: Flight Through History
 
-A web-based space flight game that takes you through all 8 eras of the Space Race, from the foundations in 1945 to the future of space exploration.
+A web-based space flight game that takes you through all 3 eras of the Space Race, from the foundations in 1945 to the future of space exploration.
 
 ## Features
 
-- **8 Historical Eras**: Journey through the complete Space Race timeline
+- **3 Historical Eras**: Journey through the complete Space Race timeline
 - **Beautiful Spaceship**: Custom-designed ship matching the yellow/gold and dark blue color scheme
 - **Smooth Controls**: Use Arrow Keys or WASD to navigate
 - **Dynamic Gameplay**: Avoid obstacles as you travel through each era
