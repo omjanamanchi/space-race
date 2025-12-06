@@ -1,0 +1,418 @@
+.completion-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    background: radial-gradient(circle at 50% 50%, rgba(10, 20, 60, 0.9), #030615);
+    overflow-y: auto;
+}
+
+.completion-page__background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.completion-page__stars {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, #ffffff, transparent),
+        radial-gradient(2px 2px at 60% 70%, #ffffff, transparent),
+        radial-gradient(1px 1px at 50% 50%, #ffffff, transparent),
+        radial-gradient(1px 1px at 80% 10%, #ffffff, transparent),
+        radial-gradient(2px 2px at 90% 50%, #ffffff, transparent),
+        radial-gradient(1px 1px at 33% 60%, #ffffff, transparent),
+        radial-gradient(1px 1px at 70% 20%, #ffffff, transparent),
+        radial-gradient(2px 2px at 40% 80%, #ffffff, transparent);
+    background-repeat: repeat;
+    background-size: 200% 200%;
+    animation: starfield 20s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes starfield {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.completion-page__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 900px;
+    width: 100%;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.completion-page__content.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+.completion-page__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.completion-page__nasa-logo {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: logo-float 3s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.completion-page__nasa-logo svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+.completion-page__message-box {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    padding: 1.5rem 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-align: center;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.completion-page__message-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.completion-page__congratulations {
+    margin: 0;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    text-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.5),
+        0 4px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.completion-page__badges {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.completion-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 120px;
+    animation: badge-appear 0.6s ease-out backwards;
+}
+
+.completion-badge:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.completion-badge:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.completion-badge:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes badge-appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.completion-badge:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.completion-badge--era-a {
+    border-color: #ff6b47;
+    box-shadow: 0 0 20px rgba(255, 107, 71, 0.3);
+}
+
+.completion-badge--era-a .completion-badge__icon {
+    background: linear-gradient(135deg, #ff6b47, #ff8c69);
+    color: #ffffff;
+}
+
+.completion-badge--era-b {
+    border-color: #4a9eff;
+    box-shadow: 0 0 20px rgba(74, 158, 255, 0.3);
+}
+
+.completion-badge--era-b .completion-badge__icon {
+    background: linear-gradient(135deg, #4a9eff, #6bb6ff);
+    color: #ffffff;
+}
+
+.completion-badge--era-c {
+    border-color: #7c3aed;
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+.completion-badge--era-c .completion-badge__icon {
+    background: linear-gradient(135deg, #7c3aed, #9b5de5);
+    color: #ffffff;
+}
+
+.completion-badge__icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.completion-badge__label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.completion-page__actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.completion-page__works-cited-btn {
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    background: linear-gradient(120deg, #ff4f8c, #ffb347);
+    color: #030615;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
+}
+
+.completion-page__works-cited-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(255, 126, 95, 0.4);
+}
+
+.completion-page__works-cited {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    width: 100%;
+    background: rgba(5, 8, 20, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 3rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    animation: fade-in 0.5s ease;
+}
+
+.completion-page__works-cited.fade-in {
+    animation: fade-in 0.5s ease;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.completion-page__works-cited-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.completion-page__works-cited-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.completion-page__back-btn {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.completion-page__back-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateX(-3px);
+}
+
+.completion-page__works-cited-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+}
+
+.completion-page__citation {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    line-height: 1.6;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+}
+
+.completion-page__citation:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.completion-page__citation-number {
+    font-weight: 700;
+    color: #ffd700;
+    flex-shrink: 0;
+    min-width: 2rem;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+}
+
+.completion-page__citation-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12pt;
+    font-family: "Times New Roman", Times, serif;
+}
+
+@media (max-width: 768px) {
+    .completion-page__badges {
+        gap: 1.5rem;
+    }
+
+    .completion-badge {
+        min-width: 120px;
+        padding: 1.25rem;
+    }
+
+    .completion-badge__icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    .completion-page__congratulations {
+        font-size: 1.5rem;
+    }
+
+    .completion-page__works-cited {
+        padding: 2rem 1.5rem;
+    }
+
+    .completion-page__works-cited-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
